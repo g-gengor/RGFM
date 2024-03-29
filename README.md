@@ -5,6 +5,7 @@ src/ folder contains the source code and building bash files.
 RGFM calculations are configured via RGFM_config file. There are several tags that needs to be given in this file
 
 PERIODIC_DIM: dimension of periodicity (Default 0). For dislocations, it is 1. For point defects, it is 0.
+
 TO DO: imlement point defect codes
 
 L_MAX: the maximum degree of spherical harmonics in spherical harmonic expansion (Default 8). For 4H-SiC, 8 is good enough.
@@ -14,11 +15,13 @@ MAX_IMAGES: maximum number of images (both positive and negative) along the peri
 SPECIES: the number of species and species names (Mandatory). It should be given in the file in the following fashion: SPECIES 3 C Si N
 
 PERIODIC_VECS: these are the vectors along which the system is periodic. For a dislocation, for example, PERIODIC_VECS 3.062 0.0 0.0
+
 TO DO: Implement higher periodicities in RGFM code. Extra periodic vectors will be added to the above example string.
 
 THREAD_NUM: number of threads to run parallel fors on in RGFM code (Default 1).
 
 PROBLEM: type of problem to be solved (Mandatory). PROBLEM H solves the H scaling vectors for given configuration. PROBLEM GRID solves the grid problem.
+
 TO DO: Implement point defect solutions wrapper here. Currently these only work for dislocation cases.
 
 Apart from the RGFM_config file, you can pass a grid number through CLI as follows.

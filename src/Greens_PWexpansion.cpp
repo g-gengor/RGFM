@@ -647,6 +647,7 @@ MatrixX3d Greens_PWexpansion::solve4grid_disloc(std::string grid_path, int max_i
 
 MatrixX3d Greens_PWexpansion::solve4grid_disloc_threaded(std::string grid_path, int max_image_num){
     cout << std::setprecision(16);
+    cout << "grid path: " << grid_path << endl;
     MatrixXd grid = readMatrix(grid_path.c_str());
     int total_point_num = grid.rows();
     Matrix<double,Dynamic,Dynamic> us(total_point_num,3);

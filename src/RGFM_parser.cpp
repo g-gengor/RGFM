@@ -108,13 +108,14 @@ void RGFM_parser::disloc_solve_h()
 void RGFM_parser::disloc_solve_grid()
 {
     
-    Greens_PWexpansion G(this->gpw_l_max, this->gpw_species);
+    Greens_PWexpansion G(this->gpw_l_max, this->gpw_species,1);
     G.set_dislocation_per_vec(this->periodic_vecs(0,0),this->periodic_vecs(0,1),this->periodic_vecs(0,2));//this is the periodicity along dislocation line
     G.set_thread_num(this->thread_num);
 
     std::string grid_prepath("GRIDS/GRID_");
     std::string s = std::to_string(this->mpi_partition_num);
     std::string grid_path = grid_prepath + s;
+    //cout << "grid path: " << grid_path << endl;
     std::cout << "Grid solution is starting" << endl;
 
     auto start = chrono::high_resolution_clock::now();
