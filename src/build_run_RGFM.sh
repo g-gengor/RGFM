@@ -1,6 +1,9 @@
-#!/bin/bash
-#g++ -std=c++14 -c Greens_PWexpansion.cpp disloc_h_solver_LP.cpp -I /home/gorkem/anaconda3/envs/GFM_c/include/eigen3 -I/home/gorkem/anaconda3/envs/GFM_c/include -O2
-#g++ -std=c++14 -o LP_h Greens_PWexpansion.o disloc_h_solver_LP.o -lpthread -O2
-g++ -std=c++14 -c RGFM_parser.cpp run_RGFM.cpp Greens_PWexpansion.cpp -I /home/gorkem/anaconda3/envs/GFM_c/include/eigen3 -I/home/gorkem/anaconda3/envs/GFM_c/include -O2
-g++ -std=c++14 -o run_RGFM RGFM_parser.o run_RGFM.o Greens_PWexpansion.o -lpthread -O2
-mv run_RGFM ../bin/run_RGFM
+#!/usr/bin/env bash
+# Thin convenience wrapper around CMake: configures a Release build in
+# <repo>/build and puts the executable in <repo>/bin/run_RGFM.
+# Extra arguments are passed to the configure step, e.g.
+#   src/build_run_RGFM.sh -DCMAKE_PREFIX_PATH=/path/to/deps
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cmake -S "$ROOT" -B "$ROOT/build" -DCMAKE_BUILD_TYPE=Release "$@"
+cmake --build "$ROOT/build" --parallel
