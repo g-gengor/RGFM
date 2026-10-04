@@ -1,0 +1,26 @@
+# Build outputs
+/build/
+/build-*/
+/bin/
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+
+# Stray executables from the old manual build
+src/run_RGFM
+src/parser
+test_*/run_RGFM
+
+# Python / Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# OS / editor clutter
+.DS_Store
+.vscode/
+.idea/
