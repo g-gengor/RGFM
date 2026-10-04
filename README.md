@@ -15,8 +15,9 @@ This is the C++ reference implementation for:
 - G. Gengor, O. K. Celebi, A. S. K. Mohammed, H. Sehitoglu, **"Continuum strain
   of point defects,"** *Journal of the Mechanics and Physics of Solids* 188,
   105653 (2024). [doi:10.1016/j.jmps.2024.105653](https://doi.org/10.1016/j.jmps.2024.105653)
-- Dislocation paper, *Physical Review Materials* (2025).
-  **[TODO: add title, authors and DOI]** <!-- TODO(PRM-2025): fill in the citation and DOI link -->
+- G. Gengor, O. K. Celebi, S. Pekol, D. You, A. S. K. Mohammed, H. Sehitoglu,
+  **"Atomistics informed continuum strain field of dislocations,"** *Physical
+  Review Materials* 9, 093601 (2025). [doi:10.1103/nspp-zy5m](https://doi.org/10.1103/nspp-zy5m)
 
 <!-- TODO(figure): add docs/figure.png, then uncomment the next line.
 ![RGFM displacement field around a defect](docs/figure.png)
@@ -241,5 +242,20 @@ If you use RGFM, please cite:
   issn      = {0022-5096},
   doi       = {10.1016/j.jmps.2024.105653},
   url       = {https://doi.org/10.1016/j.jmps.2024.105653}
+}
+
+@article{Gengor_2025,
+  title     = {Atomistics informed continuum strain field of dislocations},
+  author    = {Gengor, Gorkem and Celebi, Orcun Koray and Pekol, Sena and You, Daegun and Mohammed, Ahmed Sameer Khan and Sehitoglu, Huseyin},
+  journal   = {Physical Review Materials},
+  volume    = {9},
+  number    = {9},
+  pages     = {093601},
+  year      = {2025},
+  month     = sep,
+  publisher = {American Physical Society},
+  issn      = {2475-9953},
+  doi       = {10.1103/nspp-zy5m},
+  url       = {https://doi.org/10.1103/nspp-zy5m}
 }
 ```
