@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Also run the slow test_p1h case (dense 1116x1116 solve; ~12 min on a 4-thread laptop)"
+        type: boolean
+        default: false
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libeigen3-dev libboost-dev
+
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      # test_p1grid takes seconds; test_p1h takes ~12 min on 4 threads on a
+      # laptop, so it only runs on manual dispatches with "full" checked.
+      - name: Test (test_p1grid)
+        run: scripts/run_tests.sh grid
+
+      - name: Test (test_p1h)
+        if: github.event_name == 'workflow_dispatch' && inputs.full
+        run: scripts/run_tests.sh h
