@@ -130,9 +130,9 @@ PROBLEM GRID
 
 | Tag | Default | Description |
 |---|---|---|
-| `PERIODIC_DIM` | 0 | Dimension of periodicity: 1 for dislocations, 0 for point defects. Only 1 is currently implemented (see [roadmap](#limitations--roadmap)). |
+| `PERIODIC_DIM` | 0 | Dimension of periodicity: 1 for dislocations, 0 for point defects. Only 1 is currently implemented; for point defects use `PERIODIC_DIM 1` with `MAX_IMAGES 0` (see [roadmap](#limitations--roadmap)). |
 | `L_MAX` | 8 | Maximum degree l of the spherical harmonic expansion (only even l contribute). 8 is sufficient for 4H-SiC. The A matrices and force profiles must cover every even l up to `L_MAX`. |
-| `MAX_IMAGES` | 0 | Number of periodic images on each side of the cell along the periodic vector (images -n...+n). Used for dislocations; irrelevant for point defects. |
+| `MAX_IMAGES` | 0 | Number of periodic images on each side of the cell along the periodic vector (images -n...+n). Used for dislocations; set it to 0 for point defects. |
 | `SPECIES` | *required* | Number of species followed by their names, e.g. `SPECIES 3 C Si N`. The order defines the species index used in `DISP` (C = 1, Si = 2, N = 3) and the force profile file names (`F/F_C.txt`, ...). |
 | `PERIODIC_VECS` | 0 | Vector(s) along which the system is periodic, e.g. `PERIODIC_VECS 3.062 0.0 0.0` for a dislocation line along x. Up to three vectors can be given on the same line (9 numbers), but only the first one is used so far. |
 | `THREAD_NUM` | 1 | Number of threads for the parallel loops. |
@@ -210,10 +210,14 @@ installed separately.
 
 ## Limitations / roadmap
 
-- **Point defects.** The `RGFM_config` driver only handles dislocations
-  (`PERIODIC_DIM 1`). Solvers for isolated defects exist in
-  `Greens_PWexpansion` (`solve_h`, `solve4grid`) but are not yet wired up; a
-  config with `PERIODIC_DIM 0` currently runs nothing.
+- **Point defects.** The `RGFM_config` driver only dispatches on
+  `PERIODIC_DIM 1`; a config with `PERIODIC_DIM 0` currently exits without
+  computing anything. Until a dedicated point-defect wrapper is added, run point
+  defects with `PERIODIC_DIM 1` and `MAX_IMAGES 0`. With no images, the
+  dislocation solvers reduce to the isolated-defect Green's function and
+  compute the same H and displacement field as the (not yet wired up)
+  point-defect solvers `solve_h` and `solve4grid` in `Greens_PWexpansion`, with
+  multithreading. `PERIODIC_VECS` is then unused.
 - **Higher periodicity.** Image sums are implemented along a single periodic
   vector. Extra periodic vectors (2D/3D periodicity) are planned and would be
   added to the `PERIODIC_VECS` line.
