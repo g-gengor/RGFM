@@ -56,7 +56,7 @@ run_case() {
   cp -R "$ROOT/$name" "$dir"
   rm -f "$dir/$output"
   echo
-  echo "== $name: running run_RGFM $* (log: $dir/run.log)"
+  echo "== $name: running run_RGFM${*:+ $*} (log: $dir/run.log)"
   local start=$SECONDS
   if ! (cd "$dir" && "$BIN" "$@" > run.log 2>&1); then
     echo "FAIL: run_RGFM exited with an error; last lines of the log:"
