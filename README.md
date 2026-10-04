@@ -1,8 +1,8 @@
-# RGFM
+# RGFM: Regularized Green's Function Method
 
 [![CI](https://github.com/g-gengor/RGFM/actions/workflows/ci.yml/badge.svg)](https://github.com/g-gengor/RGFM/actions/workflows/ci.yml)
 
-RGFM computes the continuum displacement field around crystal defects from
+The Regularized Green's Function Method (RGFM) computes the continuum displacement field around crystal defects from
 quantum-mechanical force densities. It uses the anisotropic elastic Green's
 function written as a spherical-harmonic expansion, and for dislocations it
 adds the contributions of periodic images along the dislocation line. This
