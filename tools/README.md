@@ -1,9 +1,16 @@
-### THESE ARE THE TOOLS TO CALCULATE NECESSARY DATA FOR THE USE OF RGFM
+# Pre-processing tools for RGFM
 
-## Aniso Matrix Calculation
+These tools compute the input data that RGFM needs. Install the Python
+dependencies with `pip install -r tools/requirements.txt`; see
+[force_profiles](force_profiles/README.md) for the one dependency that has to be
+installed separately (VaspBandUnfolding).
 
-This is the tool to calculate A matrix in the equation 10 of [RGFM](https://doi.org/10.1016/j.jmps.2024.105653)
+## Anisotropy matrix calculation (`aniso_matrices/`)
 
-## Force Profile Calculation
+Computes the A matrices in Eq. 10 of the
+[RGFM paper](https://doi.org/10.1016/j.jmps.2024.105653).
 
-This is the tool to calcualte force profiles for different species in the system. It follows the steps given in Section 2.2 of [https://doi.org/10.1016/j.jmps.2024.105653]
+## Force profile calculation (`force_profiles/`)
+
+Computes the force profiles of the different species in the system, following
+Section 2.2 of the [RGFM paper](https://doi.org/10.1016/j.jmps.2024.105653).
